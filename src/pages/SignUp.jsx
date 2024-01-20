@@ -12,7 +12,7 @@ const SignUp = () => {
         <Header login />
         <div className="flex flex-col items-center justify-center gap-4">
           <div className="flex flex-col gap-4 text-center text-4xl">
-            <h1 className="text-h1 font-bold py-0 px-96">
+            <h1 className="text-h1 font-bold py-0 px-72">
               Unlimited movies, TV shows and more
             </h1>
             <h4 className="text-h4">Watch anywhere. Cancel anytime.</h4>
@@ -21,16 +21,20 @@ const SignUp = () => {
               membership.
             </h6>
           </div>
-          <div>
+          <div
+            className={`w-[50%] grid  gap-2 ${
+              showPassword ? "grid-cols-[1fr_1fr]" : "grid-cols-[2fr_1fr]"
+            }`}
+          >
             <input
-              className="text-black p-4 text-sm border border-black focus:outline-none"
+              className="text-white p-4 text-sm border rounded-md border-white bg-[rgba(0,0,0,0.3)] focus:outline-none"
               type="email"
               name="email"
               placeholder="Email address"
             />
             {showPassword && (
               <input
-                className="text-black p-4 text-sm border border-black focus:outline-none"
+                className="text-white p-4 text-sm border border-white bg-[rgba(0,0,0,0.3)] focus:outline-none rounded-md"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -40,7 +44,7 @@ const SignUp = () => {
             {!showPassword && (
               <button
                 onClick={() => setShowpassword(true)}
-                className="py-4 px-4 bg-[#E50914] border-0 cursor-pointer text-white font-semibold text-sm hover:bg-opacity-90"
+                className="py-2 px-4 bg-[#E50914] border-0 cursor-pointer text-white font-semibold text-2xl hover:bg-opacity-90 rounded-md"
               >
                 Get Started
               </button>
