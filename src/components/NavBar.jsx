@@ -36,7 +36,7 @@ const NavBar = ({ isScrolled }) => {
   return (
     <div>
       <nav
-        className={`flex justify-between items-center px-8 sticky top-0 h-[6.5rem] w-full fixed z-20 ${
+        className={`flex justify-between items-center px-8 top-0 h-20 w-full fixed z-20 transition ease-in-out duration-300 ${
           isScrolled ? "bg-black" : ""
         }`}
       >
