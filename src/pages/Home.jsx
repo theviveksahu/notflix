@@ -8,10 +8,12 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenres } from "../store/netflixSlice";
+import Slider from "../components/Slider";
 
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
+  const movies = useSelector((state) => state.netflix.movies);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -47,6 +49,7 @@ const Home = () => {
           </button>
         </div>
       </div>
+      <Slider movies={movies} />
     </div>
   );
 };
