@@ -7,10 +7,32 @@ import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BsCheck } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
+import axios from "axios";
+
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
 
 const Card = ({ movieData, isLiked = false }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [email, setEmail] = useState(undefined);
   const navigate = useNavigate();
+
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) setEmail(currentUser.email);
+    else navigate("/login");
+  });
+
+  const addToList = async () => {
+    try {
+      await axios.post("http://localhost:5000/api/user/add", {
+        email,
+        data: movieData,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       onMouseEnter={() => setIsHovered(true)}
@@ -68,6 +90,7 @@ const Card = ({ movieData, isLiked = false }) => {
                   <AiOutlinePlus
                     title="Add to my list"
                     className="transition ease-in-out delay-300 hover:text-[#B8B8B8] text-3xl"
+                    onClick={addToList}
                   />
                 )}
               </div>
