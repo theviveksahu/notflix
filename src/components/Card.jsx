@@ -11,11 +11,14 @@ import axios from "axios";
 
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
+import { useDispatch } from "react-redux";
+import { removeFromLikedMovies } from "../store/netflixSlice";
 
 const Card = ({ movieData, isLiked = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [email, setEmail] = useState(undefined);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) setEmail(currentUser.email);
@@ -85,6 +88,11 @@ const Card = ({ movieData, isLiked = false }) => {
                   <BsCheck
                     title="Remove from list"
                     className="transition ease-in-out delay-300 hover:text-[#B8B8B8] text-3xl"
+                    onClick={() =>
+                      dispatch(
+                        removeFromLikedMovies({ email, movieId: movieData.id })
+                      )
+                    }
                   />
                 ) : (
                   <AiOutlinePlus
