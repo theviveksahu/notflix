@@ -41,7 +41,10 @@ const NavBar = ({ isScrolled }) => {
         }`}
       >
         <div className="flex items-center gap-8">
-          <div className="flex items-center justify-center">
+          <div
+            className="flex items-center justify-center cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img className="h-16" src={logo} alt="logo" />
           </div>
           <ul className="flex gap-8">
