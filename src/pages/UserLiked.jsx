@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchMovies,
-  getGenres,
-  getUserLikedMovies,
-} from "../store/netflixSlice";
-import SelectGenre from "../components/SelectGenre";
-import Slider from "../components/Slider";
-import NotAvailable from "../components/NotAvailable";
-import NavBar from "../components/Navbar";
+import { getUserLikedMovies } from "../store/netflixSlice";
+import NavBar from "../components/NavBar";
 import Card from "../components/Card";
 
 const UserLiked = () => {
