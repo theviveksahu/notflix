@@ -27,7 +27,7 @@ const Card = ({ movieData, isLiked = false }) => {
 
   const addToList = async () => {
     try {
-      await axios.post("http://localhost:5000/api/user/add", {
+      await axios.post("https://notflix-ut7q.onrender.com/api/user/add", {
         email,
         data: movieData,
       });
